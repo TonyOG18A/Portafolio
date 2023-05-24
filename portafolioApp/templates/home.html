@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% load static %}
+<header class="row bg-black my-auto">
+    <div class="col-md-5">
+        <img src="{% static 'portafolio/fp.webp' %}" alt="">
+    </div>
+    <div class="col-md-7">
+        <h1>Mi nombre es <strong>José Antonio Olveda García</strong></h1>
+        <h3>Soy un estudiante de Ing. Física recien egresado</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil ratione delectus quis saepe cumque dolorum!
+            Aliquid at aspernatur aliquam laborum omnis optio consequuntur. Enim commodi corporis magnam, nemo ipsum,
+            optio, ut soluta laudantium voluptas aspernatur ratione porro. Suscipit dolorum hic vel consequuntur
+            officiis dicta, cumque quisquam magnam quibusdam consequatur atque assumenda. Vel maiores optio repellendus
+            consequatur vero soluta delectus fuga, atque minus blanditiis, in corrupti quaerat odio assumenda at.
+            Sapiente, id. Dolores, consectetur laudantium perferendis minus, animi consequuntur enim excepturi magnam a,
+            at dolorem ea explicabo nemo beatae eligendi dolorum suscipit consequatur ut adipisci atque veniam maiores
+            ratione? Aliquid, voluptatum.</p>
+        <a href="{% static 'portafolio/CV_JoséOlveda.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3"
+            target="_blank">Download CV</a>
+    </div>
+</header>
+
+<div class="row my-4 text-center">
+    <h3>Mis proyectos</h3>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, repudiandae?</p>
+    {% for proyecto in proyectos %}
+    <div class="col-md-4 p-4">
+        <div class="card bg-black card-project">
+            <img src="{{proyecto.imagen.url}}" alt="{{proyecto.title}}" class="card-img-top">
+            <div class="card-body">
+                <h2>{{proyecto.titulo}}</h2>
+                <p>{{proyecto.descripcion}}</p>
+
+                {% if proyecto.url %}
+                <a href="{{proyecto.url}}" class="btn btn-light rounded-0 btn-sm" target="_blank">{{proyecto.url}}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
